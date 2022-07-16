@@ -57,7 +57,7 @@ public class DataSourceProperties {
 
     public void logProperties()
     {
-        myLogger.getLogger1().info("user="+username+" connecturi="+connectURI);
+//        myLogger.getLogger1().info("user="+username+" connecturi="+connectURI);
     }
 
 }

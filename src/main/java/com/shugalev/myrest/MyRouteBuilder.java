@@ -340,7 +340,7 @@ public class MyRouteBuilder extends RouteBuilder
 
         CamelContext context = new DefaultCamelContext();
         
-/*
+
         String[] beans=appContext.getBeanDefinitionNames();
         for(String s:beans) if(s.toUpperCase().contains("LOG"))
         {
@@ -348,7 +348,7 @@ public class MyRouteBuilder extends RouteBuilder
             appContext.getBean(s).getClass().getCanonicalName());
         }
 
-*/
+
     }
     
 // Construct map for database fields

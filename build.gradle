@@ -19,26 +19,29 @@ repositories {
     mavenCentral()
 }
 
+
+
 dependencies {
 // https://mvnrepository.com/artifact/org.apache.camel/camel-spring-boot-dependencies
     compileOnly 'org.apache.camel:camel-spring-boot-dependencies:2.21.4'
 // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-dependencies
     compileOnly 'org.springframework.boot:spring-boot-dependencies:2.7.1'
 // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web
-    implementation ('org.springframework.boot:spring-boot-starter-web:2.5.14') {
+    implementation ('org.springframework.boot:spring-boot-starter-web:2.4.13') {
         exclude group: 'jackson-datatype-jsr310', module: 'jackson-datatype-jsr310'
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
     }
 // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-actuator
-    implementation ('org.springframework.boot:spring-boot-starter-actuator:2.5.14') {
-        exclude group: 'jackson-annotations', module: 'jackson-annotations'
-        exclude group: 'jackson-datatype-jsr310', module: 'jackson-datatype-jsr310'
-    }
+//    implementation ('org.springframework.boot:spring-boot-starter-actuator:2.4.13') {
+//        exclude group: 'jackson-annotations', module: 'jackson-annotations'
+//        exclude group: 'jackson-datatype-jsr310', module: 'jackson-datatype-jsr310'
+//    }
 // https://mvnrepository.com/artifact/org.apache.camel.springboot/camel-spring-boot-starter
     implementation 'org.apache.camel:camel-spring-boot-starter:2.25.4'
 // https://mvnrepository.com/artifact/org.apache.camel/camel-test-spring
     testImplementation 'org.apache.camel:camel-test-spring:2.25.4'
 // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-test
-    testImplementation ('org.springframework.boot:spring-boot-starter-test:2.5.14') {
+    testImplementation ('org.springframework.boot:spring-boot-starter-test:2.4.13') {
         exclude group: 'android-json', module: 'android-json'
     }
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
@@ -46,16 +49,34 @@ dependencies {
 
 
 
+// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-log4j2
+//    implementation 'org.springframework.boot:spring-boot-starter-log4j2:2.7.1'
+// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-logging
+//    implementation 'org.springframework.boot:spring-boot-starter-logging:2.7.1'
 // https://mvnrepository.com/artifact/org.slf4j/slf4j-api
-    implementation 'org.slf4j:slf4j-api:1.7.36'
+    implementation 'org.slf4j:slf4j-api:1.8.0-beta4'
+// https://mvnrepository.com/artifact/ch.qos.logback/logback-classic
+//    implementation 'ch.qos.logback:logback-classic:1.2.11'
+// https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api
+    implementation 'org.apache.logging.log4j:log4j-api:2.18.0'
+// https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j
+    implementation 'org.apache.logging.log4j:log4j-core:2.18.0'
+// https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core-java9
+//    implementation 'org.apache.logging.log4j:log4j-core-java9:2.11.2'
 // https://mvnrepository.com/artifact/org.slf4j/slf4j-log4j12
 //    implementation 'org.slf4j:slf4j-log4j12:1.7.36'
 // https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-to-slf4j
- //   implementation 'org.apache.logging.log4j:log4j-to-slf4j:2.18.0'
+//    implementation 'org.apache.logging.log4j:log4j-to-slf4j:2.18.0'
 // https://mvnrepository.com/artifact/commons-logging/commons-logging
-    implementation 'commons-logging:commons-logging:1.2'
+ //   implementation 'commons-logging:commons-logging:1.2'
 // https://mvnrepository.com/artifact/log4j/log4j
-    implementation 'log4j:log4j:1.2.17'
+//    implementation 'log4j:log4j:1.2.17'
+// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-log4j2
+//    implementation 'org.springframework.boot:spring-boot-starter-log4j2:2.7.1'
+// https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-slf4j-impl
+//    implementation 'org.apache.logging.log4j:log4j-slf4j-impl:2.18.0'
+// https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-slf4j18-impl
+    implementation 'org.apache.logging.log4j:log4j-slf4j18-impl:2.18.0'
 
 
 
@@ -88,10 +109,16 @@ dependencies {
     implementation 'org.apache.commons:commons-dbcp2:2.9.0'
 // https://mvnrepository.com/artifact/org.apache.commons/commons-pool2
     implementation 'org.apache.commons:commons-pool2:2.11.1'
-// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-security
-    implementation 'org.springframework.boot:spring-boot-starter-security:2.7.0'
 // https://mvnrepository.com/artifact/org.apache.camel/camel-mail
     implementation 'org.apache.camel:camel-mail:2.25.4'
+// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-security
+    implementation 'org.springframework.boot:spring-boot-starter-security:2.7.1'
+// https://mvnrepository.com/artifact/org.springframework.security/spring-security-ldap
+    implementation 'org.springframework.security:spring-security-ldap:5.7.2'
+// https://mvnrepository.com/artifact/org.springframework.security/spring-security-oauth2-client
+    implementation 'org.springframework.security:spring-security-oauth2-client:5.7.2'
+// https://mvnrepository.com/artifact/org.springframework.security.oauth/spring-security-oauth2
+    implementation 'org.springframework.security.oauth:spring-security-oauth2:2.5.2.RELEASE'
 }
 sourceCompatibility = 1.15
 targetCompatibility = 1.15
@@ -104,4 +131,11 @@ application {
 tasks.named('test') {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
+}
+configurations.all{
+//    exclude group: 'ch.qos.logback', module: 'logback-classic'
+    exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+//    exclude group: 'org.apache.logging.log4j', module: 'log4j-to-slf4j'
+//        exclude group: 'org.apache.logging.log4j', module: 'log4j-to-slf4j'
+//    exclude group: 'org.apache.logging.log4j:', module: 'log4j-slf4j-impl'
 }

@@ -1,0 +1,78 @@
+"2022-07-16T21:29:07,095  INFO [       background-preinit](Version.java - 21)Version  : HV000001: Hibernate Validator 6.2.3.Final
+""2022-07-16T21:29:07,116  INFO [       main](StartupInfoLogger.java - 55)MyRest  : Starting MyRest using Java 15.0.2 on ilya-Z370-AORUS-Gaming-3 with PID 78411 (/home/ilya/IdeaProjects/myRest/build/classes/java/main started by ilya in /home/ilya/IdeaProjects/myRest)
+""2022-07-16T21:29:07,118  INFO [       main](SpringApplication.java - 634)MyRest  : No active profile set, falling back to 1 default profile: "default"
+""2022-07-16T21:29:07,791  INFO [       main](PostProcessorRegistrationDelegate.java - 376)PostProcessorRegistrationDelegate$BeanPostProcessorChecker  : Bean 'org.apache.camel.spring.boot.CamelAutoConfiguration' of type [org.apache.camel.spring.boot.CamelAutoConfiguration$$EnhancerBySpringCGLIB$$539839ca] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+""2022-07-16T21:29:07,941  INFO [       main](TomcatWebServer.java - 108)TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+""2022-07-16T21:29:08,024  INFO [       main](ServletWebServerApplicationContext.java - 292)ServletWebServerApplicationContext  : Root WebApplicationContext: initialization completed in 882 ms
+""2022-07-16T21:29:08,076  INFO [       main](MyLogger.java - 40)  : This is MyLogger
+""2022-07-16T21:29:08,076  INFO [       main](MyLogger.java - 42)MyLogger  : This is MyLogger
+""2022-07-16T21:29:08,163  INFO [       main](DefaultSecurityFilterChain.java - 55)DefaultSecurityFilterChain  : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@38e83838, org.springframework.security.web.context.SecurityContextPersistenceFilter@60dc1a4e, org.springframework.security.web.header.HeaderWriterFilter@14c99bf6, org.springframework.security.web.authentication.logout.LogoutFilter@13213f26, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@22d477c2, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@31efacad, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@380ce5a3, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@39832280, org.springframework.security.web.access.ExceptionTranslationFilter@7e3236d, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@5db3d57c]
+""2022-07-16T21:29:08,394  INFO [       main](DefaultTypeConverter.java - 66)DefaultTypeConverter  : Type converters loaded (core: 195, classpath: 11)
+""2022-07-16T21:29:08,532  INFO [       main](AbstractContextSource.java - 425)AbstractContextSource  : Property 'userDn' not set - anonymous context will be used for read-write operations
+""2022-07-16T21:29:08,601  INFO [       main](CamelHttpTransportServlet.java - 77)CamelHttpTransportServlet  : Initialized CamelHttpTransportServlet[name=CamelServlet, contextPath=]
+""2022-07-16T21:29:08,601  INFO [       main](TomcatWebServer.java - 220)TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+""2022-07-16T21:29:08,630  INFO [       main](RoutesCollector.java - 297)RoutesCollector  : Loading additional Camel XML routes from: classpath:camel/*.xml
+""2022-07-16T21:29:08,630  INFO [       main](RoutesCollector.java - 314)RoutesCollector  : Loading additional Camel XML rests from: classpath:camel-rest/*.xml
+""2022-07-16T21:29:08,635  INFO [       main](DefaultCamelContext.java - 3137)SpringCamelContext  : Apache Camel 2.25.4 (CamelContext: camel-1) is starting
+""2022-07-16T21:29:08,636  INFO [       main](ManagedManagementStrategy.java - 205)ManagedManagementStrategy  : JMX is enabled
+""2022-07-16T21:29:08,789  INFO [       main](DefaultCamelContext.java - 3464)SpringCamelContext  : StreamCaching is not in use. If using streams then its recommended to enable stream caching. See more details at http://camel.apache.org/stream-caching.html
+""2022-07-16T21:29:08,880  INFO [       main](DefaultCamelContext.java - 4035)SpringCamelContext  : Route: route1 started and consuming from: direct://read
+""2022-07-16T21:29:08,880  INFO [       main](DefaultCamelContext.java - 4035)SpringCamelContext  : Route: route2 started and consuming from: direct://create
+""2022-07-16T21:29:08,881  INFO [       main](DefaultCamelContext.java - 4035)SpringCamelContext  : Route: route3 started and consuming from: direct://update
+""2022-07-16T21:29:08,881  INFO [       main](DefaultCamelContext.java - 4035)SpringCamelContext  : Route: route4 started and consuming from: direct://delete
+""2022-07-16T21:29:08,882  INFO [       main](DefaultCamelContext.java - 4035)SpringCamelContext  : Route: route5 started and consuming from: servlet:/ilya?httpMethodRestrict=GET
+""2022-07-16T21:29:08,882  INFO [       main](DefaultCamelContext.java - 4035)SpringCamelContext  : Route: route6 started and consuming from: servlet:/ilya?httpMethodRestrict=POST
+""2022-07-16T21:29:08,883  INFO [       main](DefaultCamelContext.java - 4035)SpringCamelContext  : Route: route7 started and consuming from: servlet:/ilya1?httpMethodRestrict=POST
+""2022-07-16T21:29:08,883  INFO [       main](DefaultCamelContext.java - 4035)SpringCamelContext  : Route: route8 started and consuming from: servlet:/ilya?httpMethodRestrict=PUT
+""2022-07-16T21:29:08,884  INFO [       main](DefaultCamelContext.java - 4035)SpringCamelContext  : Route: route9 started and consuming from: servlet:/ilya1?httpMethodRestrict=PUT
+""2022-07-16T21:29:08,884  INFO [       main](DefaultCamelContext.java - 4035)SpringCamelContext  : Route: route10 started and consuming from: servlet:/ilya?httpMethodRestrict=DELETE
+""2022-07-16T21:29:08,885  INFO [       main](DefaultCamelContext.java - 3185)SpringCamelContext  : Total 10 routes, of which 10 are started
+""2022-07-16T21:29:08,885  INFO [       main](DefaultCamelContext.java - 3196)SpringCamelContext  : Apache Camel 2.25.4 (CamelContext: camel-1) started in 0.250 seconds
+""2022-07-16T21:29:08,887  INFO [       main](StartupInfoLogger.java - 61)MyRest  : Started MyRest in 1.983 seconds (JVM running for 2.352)
+""2022-07-16T21:31:03,525  INFO [       SpringApplicationShutdownHook](DefaultCamelContext.java - 3495)SpringCamelContext  : Apache Camel 2.25.4 (CamelContext: camel-1) is shutting down
+""2022-07-16T21:31:03,525  INFO [       SpringApplicationShutdownHook](DefaultShutdownStrategy.java - 195)DefaultShutdownStrategy  : Starting to graceful shutdown 10 routes (timeout 300 seconds)
+""2022-07-16T21:31:03,528  INFO [       Camel (camel-1) thread #1 - ShutdownTask](DefaultShutdownStrategy.java - 671)DefaultShutdownStrategy  : Route: route10 shutdown complete, was consuming from: servlet:/ilya?httpMethodRestrict=DELETE
+""2022-07-16T21:31:03,528  INFO [       Camel (camel-1) thread #1 - ShutdownTask](DefaultShutdownStrategy.java - 671)DefaultShutdownStrategy  : Route: route9 shutdown complete, was consuming from: servlet:/ilya1?httpMethodRestrict=PUT
+""2022-07-16T21:31:03,529  INFO [       Camel (camel-1) thread #1 - ShutdownTask](DefaultShutdownStrategy.java - 671)DefaultShutdownStrategy  : Route: route8 shutdown complete, was consuming from: servlet:/ilya?httpMethodRestrict=PUT
+""2022-07-16T21:31:03,529  INFO [       Camel (camel-1) thread #1 - ShutdownTask](DefaultShutdownStrategy.java - 671)DefaultShutdownStrategy  : Route: route7 shutdown complete, was consuming from: servlet:/ilya1?httpMethodRestrict=POST
+""2022-07-16T21:31:03,529  INFO [       Camel (camel-1) thread #1 - ShutdownTask](DefaultShutdownStrategy.java - 671)DefaultShutdownStrategy  : Route: route6 shutdown complete, was consuming from: servlet:/ilya?httpMethodRestrict=POST
+""2022-07-16T21:31:03,530  INFO [       Camel (camel-1) thread #1 - ShutdownTask](DefaultShutdownStrategy.java - 671)DefaultShutdownStrategy  : Route: route5 shutdown complete, was consuming from: servlet:/ilya?httpMethodRestrict=GET
+""2022-07-16T21:31:03,530  INFO [       Camel (camel-1) thread #1 - ShutdownTask](DefaultShutdownStrategy.java - 671)DefaultShutdownStrategy  : Route: route4 shutdown complete, was consuming from: direct://delete
+""2022-07-16T21:31:03,531  INFO [       Camel (camel-1) thread #1 - ShutdownTask](DefaultShutdownStrategy.java - 671)DefaultShutdownStrategy  : Route: route3 shutdown complete, was consuming from: direct://update
+""2022-07-16T21:31:03,531  INFO [       Camel (camel-1) thread #1 - ShutdownTask](DefaultShutdownStrategy.java - 671)DefaultShutdownStrategy  : Route: route2 shutdown complete, was consuming from: direct://create
+""2022-07-16T21:31:03,532  INFO [       Camel (camel-1) thread #1 - ShutdownTask](DefaultShutdownStrategy.java - 671)DefaultShutdownStrategy  : Route: route1 shutdown complete, was consuming from: direct://read
+""2022-07-16T21:31:03,532  INFO [       SpringApplicationShutdownHook](DefaultShutdownStrategy.java - 260)DefaultShutdownStrategy  : Graceful shutdown of 10 routes completed in 0 seconds
+""2022-07-16T21:31:03,539  INFO [       SpringApplicationShutdownHook](DefaultCamelContext.java - 3597)SpringCamelContext  : Apache Camel 2.25.4 (CamelContext: camel-1) uptime 1 minute
+""2022-07-16T21:31:03,539  INFO [       SpringApplicationShutdownHook](DefaultCamelContext.java - 3598)SpringCamelContext  : Apache Camel 2.25.4 (CamelContext: camel-1) is shutdown in 0.014 seconds
+""2022-07-16T21:31:03,543  INFO [       SpringApplicationShutdownHook](CamelHttpTransportServlet.java - 87)CamelHttpTransportServlet  : Destroyed CamelHttpTransportServlet[CamelServlet]
+"2022-07-16T21:31:04,882  INFO [       background-preinit](Version.java - 21)Version  : HV000001: Hibernate Validator 6.2.3.Final
+2022-07-16T21:31:04,908  INFO [       main](StartupInfoLogger.java - 55)MyRest  : Starting MyRest using Java 15.0.2 on ilya-Z370-AORUS-Gaming-3 with PID 78693 (/home/ilya/IdeaProjects/myRest/build/classes/java/main started by ilya in /home/ilya/IdeaProjects/myRest)
+2022-07-16T21:31:04,911  INFO [       main](SpringApplication.java - 634)MyRest  : No active profile set, falling back to 1 default profile: "default"
+2022-07-16T21:31:05,591  INFO [       main](PostProcessorRegistrationDelegate.java - 376)PostProcessorRegistrationDelegate$BeanPostProcessorChecker  : Bean 'org.apache.camel.spring.boot.CamelAutoConfiguration' of type [org.apache.camel.spring.boot.CamelAutoConfiguration$$EnhancerBySpringCGLIB$$f575e2da] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-07-16T21:31:05,738  INFO [       main](TomcatWebServer.java - 108)TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-07-16T21:31:05,813  INFO [       main](ServletWebServerApplicationContext.java - 292)ServletWebServerApplicationContext  : Root WebApplicationContext: initialization completed in 873 ms
+2022-07-16T21:31:05,861  INFO [       main](MyLogger.java - 40)  : This is MyLogger
+2022-07-16T21:31:05,861  INFO [       main](MyLogger.java - 42)MyLogger  : This is MyLogger
+2022-07-16T21:31:05,946  INFO [       main](DefaultSecurityFilterChain.java - 55)DefaultSecurityFilterChain  : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3c7279a5, org.springframework.security.web.context.SecurityContextPersistenceFilter@9fe720a, org.springframework.security.web.header.HeaderWriterFilter@2db15f70, org.springframework.security.web.authentication.logout.LogoutFilter@7ca492d9, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@102c18e, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@118acf70, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@72557746, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2bebd114, org.springframework.security.web.access.ExceptionTranslationFilter@57fdb8a4, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@46a123e4]
+2022-07-16T21:31:06,179  INFO [       main](DefaultTypeConverter.java - 66)DefaultTypeConverter  : Type converters loaded (core: 195, classpath: 11)
+2022-07-16T21:31:06,330  INFO [       main](AbstractContextSource.java - 425)AbstractContextSource  : Property 'userDn' not set - anonymous context will be used for read-write operations
+2022-07-16T21:31:06,402  INFO [       main](CamelHttpTransportServlet.java - 77)CamelHttpTransportServlet  : Initialized CamelHttpTransportServlet[name=CamelServlet, contextPath=]
+2022-07-16T21:31:06,403  INFO [       main](TomcatWebServer.java - 220)TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-07-16T21:31:06,431  INFO [       main](RoutesCollector.java - 297)RoutesCollector  : Loading additional Camel XML routes from: classpath:camel/*.xml
+2022-07-16T21:31:06,431  INFO [       main](RoutesCollector.java - 314)RoutesCollector  : Loading additional Camel XML rests from: classpath:camel-rest/*.xml
+2022-07-16T21:31:06,436  INFO [       main](DefaultCamelContext.java - 3137)SpringCamelContext  : Apache Camel 2.25.4 (CamelContext: camel-1) is starting
+2022-07-16T21:31:06,437  INFO [       main](ManagedManagementStrategy.java - 205)ManagedManagementStrategy  : JMX is enabled
+2022-07-16T21:31:06,567  INFO [       main](DefaultCamelContext.java - 3464)SpringCamelContext  : StreamCaching is not in use. If using streams then its recommended to enable stream caching. See more details at http://camel.apache.org/stream-caching.html
+2022-07-16T21:31:06,667  INFO [       main](DefaultCamelContext.java - 4035)SpringCamelContext  : Route: route1 started and consuming from: direct://read
+2022-07-16T21:31:06,668  INFO [       main](DefaultCamelContext.java - 4035)SpringCamelContext  : Route: route2 started and consuming from: direct://create
+2022-07-16T21:31:06,668  INFO [       main](DefaultCamelContext.java - 4035)SpringCamelContext  : Route: route3 started and consuming from: direct://update
+2022-07-16T21:31:06,669  INFO [       main](DefaultCamelContext.java - 4035)SpringCamelContext  : Route: route4 started and consuming from: direct://delete
+2022-07-16T21:31:06,669  INFO [       main](DefaultCamelContext.java - 4035)SpringCamelContext  : Route: route5 started and consuming from: servlet:/ilya?httpMethodRestrict=GET
+2022-07-16T21:31:06,670  INFO [       main](DefaultCamelContext.java - 4035)SpringCamelContext  : Route: route6 started and consuming from: servlet:/ilya?httpMethodRestrict=POST
+2022-07-16T21:31:06,671  INFO [       main](DefaultCamelContext.java - 4035)SpringCamelContext  : Route: route7 started and consuming from: servlet:/ilya1?httpMethodRestrict=POST
+2022-07-16T21:31:06,671  INFO [       main](DefaultCamelContext.java - 4035)SpringCamelContext  : Route: route8 started and consuming from: servlet:/ilya?httpMethodRestrict=PUT
+2022-07-16T21:31:06,672  INFO [       main](DefaultCamelContext.java - 4035)SpringCamelContext  : Route: route9 started and consuming from: servlet:/ilya1?httpMethodRestrict=PUT
+2022-07-16T21:31:06,672  INFO [       main](DefaultCamelContext.java - 4035)SpringCamelContext  : Route: route10 started and consuming from: servlet:/ilya?httpMethodRestrict=DELETE
+2022-07-16T21:31:06,673  INFO [       main](DefaultCamelContext.java - 3185)SpringCamelContext  : Total 10 routes, of which 10 are started
+2022-07-16T21:31:06,673  INFO [       main](DefaultCamelContext.java - 3196)SpringCamelContext  : Apache Camel 2.25.4 (CamelContext: camel-1) started in 0.237 seconds
+2022-07-16T21:31:06,675  INFO [       main](StartupInfoLogger.java - 61)MyRest  : Started MyRest in 2.013 seconds (JVM running for 2.449)
