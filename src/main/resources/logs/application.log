@@ -1,10 +1,10 @@
-2022-07-16T21:29:08,079  INFO [       main](MyLogger.java - 66)MyLogger  : Begin logging to File
-2022-07-16T21:29:08,622  INFO [       main](MyRouteBuilder.java - 347)MyLogger  : myLogger com.shugalev.myrest.MyLogger$$EnhancerBySpringCGLIB$$32a89bdc
-2022-07-16T21:29:08,622  INFO [       main](MyRouteBuilder.java - 347)MyLogger  : org.apache.camel.component.log.springboot.LogComponentAutoConfiguration org.apache.camel.component.log.springboot.LogComponentAutoConfiguration$$EnhancerBySpringCGLIB$$aa42cab8
-2022-07-16T21:29:08,625  INFO [       main](MyRouteBuilder.java - 347)MyLogger  : log-component org.apache.camel.component.log.LogComponent
-2022-07-16T21:29:08,625  INFO [       main](MyRouteBuilder.java - 347)MyLogger  : camel.component.log-org.apache.camel.component.log.springboot.LogComponentConfiguration org.apache.camel.component.log.springboot.LogComponentConfiguration
-2022-07-16T21:31:05,864  INFO [       main](MyLogger.java - 66)MyLogger  : Begin logging to File
-2022-07-16T21:31:06,423  INFO [       main](MyRouteBuilder.java - 347)MyLogger  : myLogger com.shugalev.myrest.MyLogger$$EnhancerBySpringCGLIB$$d48644ec
-2022-07-16T21:31:06,423  INFO [       main](MyRouteBuilder.java - 347)MyLogger  : org.apache.camel.component.log.springboot.LogComponentAutoConfiguration org.apache.camel.component.log.springboot.LogComponentAutoConfiguration$$EnhancerBySpringCGLIB$$4c2073c8
-2022-07-16T21:31:06,426  INFO [       main](MyRouteBuilder.java - 347)MyLogger  : log-component org.apache.camel.component.log.LogComponent
-2022-07-16T21:31:06,427  INFO [       main](MyRouteBuilder.java - 347)MyLogger  : camel.component.log-org.apache.camel.component.log.springboot.LogComponentConfiguration org.apache.camel.component.log.springboot.LogComponentConfiguration
+2022-07-17T08:59:18,837  INFO [       main](MyLogger.java - 67)MyLogger  : Begin logging to File
+2022-07-17T08:59:19,372  INFO [       main](MyRouteBuilder.java - 347)MyLogger  : myLogger com.shugalev.myrest.MyLogger$$EnhancerBySpringCGLIB$$c792a0dc
+2022-07-17T08:59:19,373  INFO [       main](MyRouteBuilder.java - 347)MyLogger  : org.apache.camel.component.log.springboot.LogComponentAutoConfiguration org.apache.camel.component.log.springboot.LogComponentAutoConfiguration$$EnhancerBySpringCGLIB$$3f2ccfb8
+2022-07-17T08:59:19,377  INFO [       main](MyRouteBuilder.java - 347)MyLogger  : log-component org.apache.camel.component.log.LogComponent
+2022-07-17T08:59:19,377  INFO [       main](MyRouteBuilder.java - 347)MyLogger  : camel.component.log-org.apache.camel.component.log.springboot.LogComponentConfiguration org.apache.camel.component.log.springboot.LogComponentConfiguration
+2022-07-17T09:06:48,123  INFO [       main](MyLogger.java - 67)MyLogger  : Begin logging to File
+2022-07-17T09:06:48,678  INFO [       main](MyRouteBuilder.java - 347)MyLogger  : myLogger com.shugalev.myrest.MyLogger$$EnhancerBySpringCGLIB$$7a0c3609
+2022-07-17T09:06:48,679  INFO [       main](MyRouteBuilder.java - 347)MyLogger  : org.apache.camel.component.log.springboot.LogComponentAutoConfiguration org.apache.camel.component.log.springboot.LogComponentAutoConfiguration$$EnhancerBySpringCGLIB$$f1a664e5
+2022-07-17T09:06:48,683  INFO [       main](MyRouteBuilder.java - 347)MyLogger  : log-component org.apache.camel.component.log.LogComponent
+2022-07-17T09:06:48,684  INFO [       main](MyRouteBuilder.java - 347)MyLogger  : camel.component.log-org.apache.camel.component.log.springboot.LogComponentConfiguration org.apache.camel.component.log.springboot.LogComponentConfiguration
