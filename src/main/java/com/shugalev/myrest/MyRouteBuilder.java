@@ -5,6 +5,8 @@ package com.shugalev.myrest;
  * @author ilya
  */
 import java.util.ArrayList;
+
+import com.sun.jdi.IntegerValue;
 import org.apache.camel.*;
 import org.apache.camel.impl.DefaultCamelContext;
 import org.apache.camel.model.rest.RestBindingMode;
@@ -74,6 +76,11 @@ public class MyRouteBuilder extends RouteBuilder
         Procedure of construcing WHERE clause fo SQL requests from HTTP request parameters
     */
     
+    private String makeSQL(int id,String sql1)
+    {
+        return makeSQL(id==-1 ? "":"ID="+id, sql1);
+    }
+
     private String makeSQL(String query,String sql1)
     {
         String sql2="";
@@ -132,23 +139,30 @@ public class MyRouteBuilder extends RouteBuilder
              GET requests parameters define filters. Without parameters - get all records
         */
         rest()
-                .get("/ilya")
+                .get("/ilya/{id}")
                 .route()
-                .to("log:GET_IN?level=INFO&showBody=true&showHeaders=true")
                 .to("direct:read")
                 .endRest();
-        
+        rest()
+                .get("/ilya")
+                .route()
+                .setHeader("id",simple("-1"))
+                .to("direct:read")
+                .endRest();
+
         /*
              Endpoint to process get requests
         */
 
         from("direct:read")
+                .to("log:GET_IN?level=INFO&showBody=true&showHeaders=true")
                 .process(new Processor() {
                     @Override
                     public void process(Exchange exchange) throws Exception {
-                       String query=(String)exchange.getIn().getHeader("CamelHttpQuery");
+//                       String query=(String)exchange.getIn().getHeader("CamelHttpQuery");
                        String sql1="SELECT * FROM MYSCHEMA.INCIDENTS";
-                       exchange.getIn().setBody(makeSQL(query,sql1));
+//                       exchange.getIn().setBody(makeSQL(query,sql1));
+                        exchange.getIn().setBody(makeSQL(exchange.getIn().getHeader("id",Integer.class),sql1));
                    }
                 })
                 .to("log:GET_BEFORE_DB?level=INFO&showBody=true&showHeaders=true")
@@ -303,24 +317,31 @@ public class MyRouteBuilder extends RouteBuilder
              DELETE requests parameters(as in GET) define filters. Without parameters - delete all records
         */
         rest()
-                .delete("/ilya")
+                .delete("/ilya/{id}")
                 .route()
-                .to("log:DELETE_IN_ilya1?level=INFO&showBody=true&showHeaders=true")
                 .to("direct:delete")
                 .endRest();
-        
+        rest()
+                .delete("/ilya/all")
+                .route()
+                .setHeader("id", simple("-1"))
+                .to("direct:delete")
+                .endRest();
+
         /*
             DELETE Processing
         */
         
                 from("direct:delete")
                     // Get Record for writing in log
+                    .to("log:DELETE_IN_ilya1?level=INFO&showBody=true&showHeaders=true")
                     .process(new Processor() {
                     @Override
                     public void process(Exchange exchange) throws Exception {
-                       String query=(String)exchange.getIn().getHeader("CamelHttpQuery");
+//                       String query=(String)exchange.getIn().getHeader("CamelHttpQuery");
                        String sql1="SELECT * FROM MYSCHEMA.INCIDENTS";
-                       exchange.getIn().setBody(makeSQL(query,sql1));
+//                       exchange.getIn().setBody(makeSQL(query,sql1));
+                       exchange.getIn().setBody(makeSQL(exchange.getIn().getHeader("id",Integer.class),sql1));
                    }
                 })
                 .to("log:GET_BEFORE_DELETE?level=INFO&showBody=true&showHeaders=true")
@@ -331,9 +352,10 @@ public class MyRouteBuilder extends RouteBuilder
                     @Override
                     public void process(Exchange exchange) throws Exception {
                         ArrayList<HashMap<String,String>> list=(ArrayList) exchange.getIn().getBody(ArrayList.class);
-                        String query=(String)exchange.getIn().getHeader("CamelHttpQuery");
+//                        String query=(String)exchange.getIn().getHeader("CamelHttpQuery");
                         String sql1="DELETE FROM MYSCHEMA.INCIDENTS";
-                        exchange.getIn().setBody(makeSQL(query,sql1));
+//                        exchange.getIn().setBody(makeSQL(query,sql1));
+                        exchange.getIn().setBody(makeSQL(exchange.getIn().getHeader("id",Integer.class),sql1));
                         exchange.getIn().setHeader("DeleteInfo", list.toString());
                    }
                 })
