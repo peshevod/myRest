@@ -125,7 +125,8 @@ public class MyRouteBuilder extends RouteBuilder
     public void configure() throws Exception {
 
         restConfiguration()
-                .component("servlet");
+                .component("servlet")
+                .bindingMode(RestBindingMode.json);
 
         /*
              GET requests parameters define filters. Without parameters - get all records
@@ -182,6 +183,7 @@ public class MyRouteBuilder extends RouteBuilder
 
         from("direct:create")
                 // Prepare SQL query
+                .split(body()).aggregationStrategy(new MyAggregationStrategy())
                 .process(new Processor() {
                  @Override
                  public void process(Exchange exchange) throws Exception {
@@ -208,6 +210,7 @@ public class MyRouteBuilder extends RouteBuilder
                     }
                 })
                 .to("jdbc:myDataSource")
+//              .aggregate(body())
                 .to("log:POST_AFTER_DB_DOP?level=INFO&showBody=true&showHeaders=true");
         
         /*

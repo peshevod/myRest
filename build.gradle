@@ -23,7 +23,7 @@ repositories {
 
 dependencies {
 // https://mvnrepository.com/artifact/org.apache.camel/camel-spring-boot-dependencies
-    compileOnly 'org.apache.camel:camel-spring-boot-dependencies:2.21.4'
+    compileOnly 'org.apache.camel:camel-spring-boot-dependencies:2.25.4'
 // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-dependencies
     compileOnly 'org.springframework.boot:spring-boot-dependencies:2.7.1'
 // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web
@@ -32,19 +32,19 @@ dependencies {
         exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
     }
 // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-actuator
-//    implementation ('org.springframework.boot:spring-boot-starter-actuator:2.4.13') {
-//        exclude group: 'jackson-annotations', module: 'jackson-annotations'
-//        exclude group: 'jackson-datatype-jsr310', module: 'jackson-datatype-jsr310'
-//    }
+    implementation ('org.springframework.boot:spring-boot-starter-actuator:2.4.13') {
+        exclude group: 'jackson-annotations', module: 'jackson-annotations'
+        exclude group: 'jackson-datatype-jsr310', module: 'jackson-datatype-jsr310'
+    }
 // https://mvnrepository.com/artifact/org.apache.camel.springboot/camel-spring-boot-starter
     implementation 'org.apache.camel:camel-spring-boot-starter:2.25.4'
 // https://mvnrepository.com/artifact/org.apache.camel/camel-test-spring
     testImplementation 'org.apache.camel:camel-test-spring:2.25.4'
 // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-test
     testImplementation ('org.springframework.boot:spring-boot-starter-test:2.4.13')
-//    {
-//        exclude group: 'android-json', module: 'android-json'
-//   }
+    {
+        exclude group: 'android-json', module: 'android-json'
+   }
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
 
@@ -67,10 +67,10 @@ dependencies {
     implementation 'org.apache.camel:camel-bean-validator:2.25.4'
 // https://mvnrepository.com/artifact/org.apache.camel/camel-jackson-starter
     implementation ('org.apache.camel:camel-jackson-starter:2.25.4')
-//    {
+    {
         // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-annotations
-//        exclude group: 'jackson-annotations', module: 'jackson-annotations'
-//    }
+        exclude group: 'jackson-annotations', module: 'jackson-annotations'
+    }
 // https://mvnrepository.com/artifact/org.apache.camel/camel-core-starter
     implementation 'org.apache.camel:camel-core-starter:2.25.4'
 // https://mvnrepository.com/artifact/org.apache.camel/camel-servlet-starter
