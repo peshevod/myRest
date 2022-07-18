@@ -8,21 +8,26 @@ import java.util.ArrayList;
 
 import com.sun.jdi.IntegerValue;
 import org.apache.camel.*;
+import org.apache.camel.component.jackson.JacksonDataFormat;
 import org.apache.camel.impl.DefaultCamelContext;
+import org.apache.camel.model.dataformat.JsonLibrary;
 import org.apache.camel.model.rest.RestBindingMode;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.stereotype.Component;
 import org.apache.camel.CamelContext;
+
+import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.apache.camel.builder.RouteBuilder;
 import org.springframework.beans.factory.annotation.Value;
-
+import org.springframework.transaction.PlatformTransactionManager;
 
 
 @Component
@@ -30,8 +35,6 @@ public class MyRouteBuilder extends RouteBuilder
 {
     @Autowired
     private ApplicationContext appContext;
-    @Autowired
-    private DataSourceProperties dataSourceProperties;
     @Autowired
     private MyLogger myLogger;
     @Value("${log.update.address}")
@@ -59,18 +62,6 @@ public class MyRouteBuilder extends RouteBuilder
     /*
         Datasource bean for access to Database
     */
-    
-    @Bean
-    public DataSource myDataSource()
-    {
-//        dataSourceProperties.logProperties();
-        BasicDataSource ds=new BasicDataSource();
-        ds.setDriverClassName(dataSourceProperties.getDriver());
-        ds.setUsername(dataSourceProperties.getUsername());
-        ds.setPassword(dataSourceProperties.getPassword());
-        ds.setUrl(dataSourceProperties.getConnectURI());
-        return ds;
-    }
     
     /*
         Procedure of construcing WHERE clause fo SQL requests from HTTP request parameters
@@ -133,7 +124,8 @@ public class MyRouteBuilder extends RouteBuilder
 
         restConfiguration()
                 .component("servlet")
-                .bindingMode(RestBindingMode.json);
+                .bindingMode(RestBindingMode.json)
+                .component("jpa:Incident");
 
         /*
              GET requests parameters define filters. Without parameters - get all records
@@ -176,7 +168,6 @@ public class MyRouteBuilder extends RouteBuilder
         rest()
                 .post("/ilya")
                 .route()
-                .to("log:POST_IN?level=INFO&showBody=true&showHeaders=true")
                 .to("direct:create")
                 .endRest();
         
@@ -187,7 +178,6 @@ public class MyRouteBuilder extends RouteBuilder
         rest()
                 .post("/ilya1")
                 .route()
-                .to("log:POST_IN?level=INFO&showBody=true&showHeaders=true")
                 .to("direct:create")
                 .endRest();
         
@@ -197,7 +187,13 @@ public class MyRouteBuilder extends RouteBuilder
 
         from("direct:create")
                 // Prepare SQL query
+                .to("log:POST_IN?level=INFO&showBody=true&showHeaders=true")
                 .split(body()).aggregationStrategy(new MyAggregationStrategy())
+                .to("log:AFTER_SPLIT?level=INFO&showBody=true&showHeaders=true")
+//                .marshal().json(JsonLibrary.Jackson, Incident.class)
+                .to("log:POST_BEFORE_UNMARSHALL?level=INFO&showBody=true&showHeaders=true")
+//                .unmarshal(new JacksonDataFormat(IncidentRepository.class), )
+                .to("log:POST_AFTER_UNMARSHALL?level=INFO&showBody=true&showHeaders=true")
                 .process(new Processor() {
                  @Override
                  public void process(Exchange exchange) throws Exception {

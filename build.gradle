@@ -11,7 +11,7 @@ plugins {
     id 'org.springframework.boot' version '2.7.1'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'application'
-    id 'io.freefair.lombok' version '6.5.0.3'
+//    id 'io.freefair.lombok' version '6.5.0.3'
     id 'java'
 }
 
@@ -29,13 +29,13 @@ dependencies {
     compileOnly 'org.springframework.boot:spring-boot-dependencies:2.7.1'
 // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web
     implementation ('org.springframework.boot:spring-boot-starter-web:2.4.13') {
-        exclude group: 'jackson-datatype-jsr310', module: 'jackson-datatype-jsr310'
+//        exclude group: 'jackson-datatype-jsr310', module: 'jackson-datatype-jsr310'
         exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
     }
 // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-actuator
     implementation ('org.springframework.boot:spring-boot-starter-actuator:2.4.13') {
-        exclude group: 'jackson-annotations', module: 'jackson-annotations'
-        exclude group: 'jackson-datatype-jsr310', module: 'jackson-datatype-jsr310'
+//        exclude group: 'jackson-annotations', module: 'jackson-annotations'
+//        exclude group: 'jackson-datatype-jsr310', module: 'jackson-datatype-jsr310'
     }
 // https://mvnrepository.com/artifact/org.apache.camel.springboot/camel-spring-boot-starter
     implementation 'org.apache.camel:camel-spring-boot-starter:2.25.4'
@@ -63,14 +63,14 @@ dependencies {
 
 
 // https://mvnrepository.com/artifact/org.apache.camel/camel-core
-    implementation 'org.apache.camel:camel-core:2.25.4'
+//    implementation 'org.apache.camel:camel-core:2.25.4'
 // https://mvnrepository.com/artifact/org.apache.camel/camel-bean-validator
     implementation 'org.apache.camel:camel-bean-validator:2.25.4'
 // https://mvnrepository.com/artifact/org.apache.camel/camel-jackson-starter
     implementation ('org.apache.camel:camel-jackson-starter:2.25.4')
     {
         // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-annotations
-        exclude group: 'jackson-annotations', module: 'jackson-annotations'
+//        exclude group: 'jackson-annotations', module: 'jackson-annotations'
     }
 // https://mvnrepository.com/artifact/org.apache.camel/camel-core-starter
     implementation 'org.apache.camel:camel-core-starter:2.25.4'
@@ -89,7 +89,7 @@ dependencies {
 // https://mvnrepository.com/artifact/com.h2database/h2
     implementation 'com.h2database:h2:2.1.214'
 // https://mvnrepository.com/artifact/org.apache.camel/camel-support
-    implementation 'org.apache.camel:camel-support:3.0.0'
+//    implementation 'org.apache.camel:camel-support:3.0.0'
 // https://mvnrepository.com/artifact/org.apache.camel/camel-jdbc
     implementation 'org.apache.camel:camel-jdbc:2.25.4'
 // https://mvnrepository.com/artifact/org.apache.commons/commons-dbcp2
@@ -110,6 +110,12 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.7.1'
 // https://mvnrepository.com/artifact/javax.persistence/javax.persistence-api
     implementation 'javax.persistence:javax.persistence-api:2.2'
+// https://mvnrepository.com/artifact/org.apache.camel/camel-jackson
+    implementation 'org.apache.camel:camel-jackson:2.25.4'
+// https://mvnrepository.com/artifact/org.apache.camel/camel-jpa
+    implementation 'org.apache.camel:camel-jpa:2.25.4'
+// https://mvnrepository.com/artifact/org.springframework.data/spring-data-jpa
+    implementation 'org.springframework.data:spring-data-jpa:2.7.2'
 }
 sourceCompatibility = 1.15
 targetCompatibility = 1.15
