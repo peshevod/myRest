@@ -33,7 +33,7 @@ public class MyConverter extends TypeConverterSupport {
                     map.containsKey("DESCRIPTION")?map.get("DESCRIPTION"):null,
                     map.containsKey("PRIORITY")?Integer.parseInt(map.get("PRIORITY")):null,
                     map.containsKey("SEVERITY")?Integer.parseInt(map.get("SEVERITY")):null,
-                    map.containsKey("SEVERITY")?map.get("ASSIGNEE"):null,
+                    map.containsKey("ASSIGNEE")?map.get("ASSIGNEE"):null,
                     map.containsKey("CATEGORY")?Integer.parseInt(map.get("CATEGORY")):null,
                     map.containsKey("CREATE_DATE")?Timestamp.valueOf(map.get("CREATE_DATE")):Timestamp.valueOf(now()),
                     map.containsKey("UPDATE_DATE")?Timestamp.valueOf(map.get("UPDATE_DATE")):Timestamp.valueOf(now()),

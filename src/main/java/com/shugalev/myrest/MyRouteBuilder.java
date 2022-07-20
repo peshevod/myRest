@@ -173,7 +173,7 @@ public class MyRouteBuilder extends RouteBuilder
 //                .unmarshal(new JacksonDataFormat())
 //                .marshal().json(JsonLibrary.Jackson, Incident.class)
                 .convertBodyTo(Incident.class)
-//                .setBody(body().convertTo(Incident.class).method("clearId"))
+                .setBody(body().convertTo(Incident.class).method("clearId"))
 //                .to("log:POST_AFTER_UNMARSHALL?level=INFO&showBody=true&showHeaders=true")
  /*               .process(new Processor() {
                  @Override
@@ -215,6 +215,7 @@ public class MyRouteBuilder extends RouteBuilder
 
         from("direct:update")
                 .to("log:PUT_IN_ilya?level=INFO&showBody=true&showHeaders=true")
+                .setProperty("InputMap",body())
                 .convertBodyTo(Incident.class)
                 // Create SQL query
 /*                .process(new Processor() {
@@ -262,8 +263,12 @@ public class MyRouteBuilder extends RouteBuilder
                 })*/
                 .to("log:PUT_BEFORE_DB?level=INFO&showBody=true&showHeaders=true")
 //                .to("jdbc:myDataSource")
-                .to("jpa:Incident")
-                .to("log:PUT_BEFORE_EMAIL?level=INFO&showBody=true&showHeaders=true")
+                .setHeader("id",body().convertTo(Incident.class).method("getId"))
+                .to("log:PUT_AFTER_GET_ID?level=INFO&showBody=true&showHeaders=true")
+                .toD("jpa:Incident?query=select o from Incident o where id=${header.id}")
+                .to("log:PUT_AFTER_QUERY?level=INFO&showBody=true&showHeaders=true")
+                .setBody(body().convertTo(Incident.class).method("update(${InputMap})"))
+                .to("log:PUT_AFTER_UPDATE?level=INFO&showBody=true&showHeaders=true")
 /*                .process(new Processor() {
                     @Override
                     public void process(Exchange exchange) throws Exception {

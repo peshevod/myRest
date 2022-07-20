@@ -223,7 +223,7 @@ public class Incident{
     this.close_date = close_date;
   }
 
-  /*private static Map keysUp(Map<String,String> in)
+  private static Map keysUp(Map<String,String> in)
   {
     HashMap<String,String> newmap=new HashMap<>();
     for(String s:in.keySet()) newmap.put(s.toUpperCase(), in.get(s));
@@ -234,18 +234,21 @@ public class Incident{
     if(map0==null) return this;
     Map<String,String> map=keysUp(map0);
     Incident inc;
-    if(map.containsKey("ID") && map.get("ID")!=null) ? Long.parseLong(map.get("ID")):null,
-            map.containsKey("STATUS")?Integer.parseInt(map.get("STATUS")):null,
-            map.containsKey("SUBJECT")?map.get("SUBJECT"):null,
-            map.containsKey("DESCRIPTION")?map.get("DESCRIPTION"):null,
-            map.containsKey("PRIORITY")?Integer.parseInt(map.get("PRIORITY")):null,
-            map.containsKey("SEVERITY")?Integer.parseInt(map.get("SEVERITY")):null,
-            map.containsKey("SEVERITY")?map.get("ASSIGNEE"):null,
-            map.containsKey("CATEGORY")?Integer.parseInt(map.get("CATEGORY")):null,
-            map.containsKey("CREATE_DATE")?Timestamp.valueOf(map.get("CREATE_DATE")):Timestamp.valueOf(now()),
-            map.containsKey("UPDATE_DATE")?Timestamp.valueOf(map.get("UPDATE_DATE")):Timestamp.valueOf(now()),
-            null, null));
+    if(map.containsKey("STATUS")) this.status=Integer.parseInt(map.get("STATUS"));
+    if(map.containsKey("SUBJECT")) this.subject=map.get("SUBJECT");
+    if(map.containsKey("DESCRIPTION")) this.description=map.get("DESCRIPTION");
+    if(map.containsKey("PRIORITY")) this.priority=Integer.parseInt(map.get("PRIORITY"));
+    if(map.containsKey("SEVERITY")) this.severity=Integer.parseInt(map.get("SEVERITY"));
+    if(map.containsKey("ASSIGNEE")) this.assignee=map.get("ASSIGNEE");
+    if(map.containsKey("CATEGORY")) this.category=Integer.parseInt(map.get("CATEGORY"));
+    this.update_date=Timestamp.valueOf(map.get("UPDATE_DATE"));
+    return this;
+  }
 
-  }*/
+  public Incident clearId()
+  {
+    id=null;
+    return this;
+  }
 
 }
