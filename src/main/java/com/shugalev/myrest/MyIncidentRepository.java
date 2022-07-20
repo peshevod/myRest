@@ -2,9 +2,9 @@ package com.shugalev.myrest;
 
 import java.util.*;
 
-import org.springframework.data.repository.CrudRepository;
+//import org.springframework.data.repository.CrudRepository;
     public class MyIncidentRepository/* implements CrudRepository<Incident, String>*/{
-        private ArrayList<Incident> incidents=new ArrayList<>();
+/*        private ArrayList<Incident> incidents=new ArrayList<>();
 
         public MyIncidentRepository() {
             this.incidents=new ArrayList<>();
@@ -89,6 +89,6 @@ import org.springframework.data.repository.CrudRepository;
 //        @Override
         public void deleteAll() {
             incidents.clear();
-        }
+        }*/
 
     }

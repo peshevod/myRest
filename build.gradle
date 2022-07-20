@@ -13,6 +13,7 @@ plugins {
     id 'application'
 //    id 'io.freefair.lombok' version '6.5.0.3'
     id 'java'
+    id 'groovy'
 }
 
 repositories {
@@ -22,30 +23,70 @@ repositories {
 
 
 
+
+
 dependencies {
-// https://mvnrepository.com/artifact/org.apache.camel/camel-spring-boot-dependencies
-    compileOnly 'org.apache.camel:camel-spring-boot-dependencies:2.25.4'
-// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-dependencies
-    compileOnly 'org.springframework.boot:spring-boot-dependencies:2.7.1'
-// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web
-    implementation ('org.springframework.boot:spring-boot-starter-web:2.4.13') {
-//        exclude group: 'jackson-datatype-jsr310', module: 'jackson-datatype-jsr310'
-        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
-    }
-// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-actuator
-    implementation ('org.springframework.boot:spring-boot-starter-actuator:2.4.13') {
+// https://mvnrepository.com/artifact/org.apache.camel/camel-bom
+    //implementation 'org.apache.camel:camel-bom:3.18.0'
+// https://mvnrepository.com/artifact/org.apache.camel.springboot/camel-spring-boot-dependencies
+    //compileOnly 'org.apache.camel.springboot:camel-spring-boot-dependencies:3.18.0'
+// https://mvnrepository.com/artifact/org.apache.camel/camel-core
+    implementation 'org.apache.camel:camel-core:3.18.0'
+// https://mvnrepository.com/artifact/org.apache.camel/camel-bean-validator
+    implementation 'org.apache.camel:camel-bean-validator:3.18.0'
+// https://mvnrepository.com/artifact/org.apache.camel/camel-jackson-starter
+    //implementation 'org.apache.camel:camel-jackson-starter:3.0.0-RC3'
+//    {
+    // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-annotations
 //        exclude group: 'jackson-annotations', module: 'jackson-annotations'
-//        exclude group: 'jackson-datatype-jsr310', module: 'jackson-datatype-jsr310'
-    }
+    //   }
+// https://mvnrepository.com/artifact/org.apache.camel.springboot/camel-core-starter
+    //implementation 'org.apache.camel.springboot:camel-core-starter:3.18.0'
+// https://mvnrepository.com/artifact/org.apache.camel.springboot/camel-servlet-starter
+    //implementation 'org.apache.camel.springboot:camel-servlet-starter:3.18.0'
+// https://mvnrepository.com/artifact/org.apache.camel/camel-package-maven-plugin
+    //implementation 'org.apache.camel:camel-package-maven-plugin:3.18.0'
+// https://mvnrepository.com/artifact/org.apache.camel/camel-support
+//    implementation 'org.apache.camel:camel-support:3.0.0'
+// https://mvnrepository.com/artifact/org.apache.camel/camel-jdbc
+    implementation 'org.apache.camel:camel-jdbc:3.18.0'
+// https://mvnrepository.com/artifact/org.apache.camel/camel-mail
+    implementation 'org.apache.camel:camel-mail:3.18.0'
+// https://mvnrepository.com/artifact/org.apache.camel/camel-swagger-java
+    //testImplementation 'org.apache.camel:camel-swagger-java:3.18.0'
+// https://mvnrepository.com/artifact/org.apache.camel/camel-jackson
+    implementation 'org.apache.camel:camel-jackson:3.18.0'
+// https://mvnrepository.com/artifact/org.apache.camel/camel-jpa
+    implementation 'org.apache.camel:camel-jpa:3.18.0'
+// https://mvnrepository.com/artifact/org.apache.camel/camel-direct
+    implementation 'org.apache.camel:camel-direct:3.18.0'
+// https://mvnrepository.com/artifact/org.apache.camel/camel-log
+    implementation 'org.apache.camel:camel-log:3.18.0'
+// https://mvnrepository.com/artifact/org.apache.camel/camel-servlet
+    implementation 'org.apache.camel:camel-servlet:3.18.0'
+// https://mvnrepository.com/artifact/org.apache.camel/camel-rest
+    implementation 'org.apache.camel:camel-rest:3.18.0'
+// https://mvnrepository.com/artifact/org.apache.camel/camel-base
+    implementation 'org.apache.camel:camel-base:3.18.0'
+// https://mvnrepository.com/artifact/org.apache.camel/camel-api
+    implementation 'org.apache.camel:camel-api:3.18.0'
+
+
+
+
+
+
 // https://mvnrepository.com/artifact/org.apache.camel.springboot/camel-spring-boot-starter
-    implementation 'org.apache.camel:camel-spring-boot-starter:2.25.4'
+    //implementation 'org.apache.camel.springboot:camel-spring-boot-starter:3.18.0'
 // https://mvnrepository.com/artifact/org.apache.camel/camel-test-spring
-    testImplementation 'org.apache.camel:camel-test-spring:2.25.4'
+    //testImplementation 'org.apache.camel:camel-test-spring:3.18.0'
+
+
 // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-test
-    testImplementation ('org.springframework.boot:spring-boot-starter-test:2.4.13')
-    {
-        exclude group: 'android-json', module: 'android-json'
-   }
+    //testImplementation ('org.springframework.boot:spring-boot-starter-test:2.7.1')
+    //{
+        //exclude group: 'android-json', module: 'android-json'
+   //}
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
 
@@ -61,61 +102,57 @@ dependencies {
     implementation 'org.apache.logging.log4j:log4j-slf4j18-impl:2.18.0'
 
 
-
-// https://mvnrepository.com/artifact/org.apache.camel/camel-core
-//    implementation 'org.apache.camel:camel-core:2.25.4'
-// https://mvnrepository.com/artifact/org.apache.camel/camel-bean-validator
-    implementation 'org.apache.camel:camel-bean-validator:2.25.4'
-// https://mvnrepository.com/artifact/org.apache.camel/camel-jackson-starter
-    implementation ('org.apache.camel:camel-jackson-starter:2.25.4')
-    {
-        // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-annotations
-//        exclude group: 'jackson-annotations', module: 'jackson-annotations'
-    }
-// https://mvnrepository.com/artifact/org.apache.camel/camel-core-starter
-    implementation 'org.apache.camel:camel-core-starter:2.25.4'
-// https://mvnrepository.com/artifact/org.apache.camel/camel-servlet-starter
-    implementation 'org.apache.camel:camel-servlet-starter:2.25.4'
-// https://mvnrepository.com/artifact/org.apache.camel/camel-package-maven-plugin
-    implementation 'org.apache.camel:camel-package-maven-plugin:3.14.4'
-// https://mvnrepository.com/artifact/org.projectlombok/lombok
-//    implementation 'org.projectlombok:lombok:1.18.24'
-//	compileOnly 'org.projectlombok:lombok:1.18.24'
-//	annotationProcessor 'org.projectlombok:lombok:1.18.24'
-//	testCompileOnly 'org.projectlombok:lombok:1.18.24'
-//	testAnnotationProcessor 'org.projectlombok:lombok:1.18.24'
-// https://mvnrepository.com/artifact/org.apache.camel/camel-swagger-java
-    testImplementation 'org.apache.camel:camel-swagger-java:3.18.0'
 // https://mvnrepository.com/artifact/com.h2database/h2
     implementation 'com.h2database:h2:2.1.214'
-// https://mvnrepository.com/artifact/org.apache.camel/camel-support
-//    implementation 'org.apache.camel:camel-support:3.0.0'
-// https://mvnrepository.com/artifact/org.apache.camel/camel-jdbc
-    implementation 'org.apache.camel:camel-jdbc:2.25.4'
 // https://mvnrepository.com/artifact/org.apache.commons/commons-dbcp2
     implementation 'org.apache.commons:commons-dbcp2:2.9.0'
-// https://mvnrepository.com/artifact/org.apache.commons/commons-pool2
-    implementation 'org.apache.commons:commons-pool2:2.11.1'
-// https://mvnrepository.com/artifact/org.apache.camel/camel-mail
-    implementation 'org.apache.camel:camel-mail:2.25.4'
-// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-security
-    implementation 'org.springframework.boot:spring-boot-starter-security:2.7.1'
-// https://mvnrepository.com/artifact/org.springframework.security/spring-security-ldap
-    implementation 'org.springframework.security:spring-security-ldap:5.7.2'
-// https://mvnrepository.com/artifact/org.springframework.security/spring-security-oauth2-client
-    implementation 'org.springframework.security:spring-security-oauth2-client:5.7.2'
-// https://mvnrepository.com/artifact/org.springframework.security.oauth/spring-security-oauth2
-    implementation 'org.springframework.security.oauth:spring-security-oauth2:2.5.2.RELEASE'
-// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-jpa
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.7.1'
 // https://mvnrepository.com/artifact/javax.persistence/javax.persistence-api
     implementation 'javax.persistence:javax.persistence-api:2.2'
-// https://mvnrepository.com/artifact/org.apache.camel/camel-jackson
-    implementation 'org.apache.camel:camel-jackson:2.25.4'
-// https://mvnrepository.com/artifact/org.apache.camel/camel-jpa
-    implementation 'org.apache.camel:camel-jpa:2.25.4'
+// https://mvnrepository.com/artifact/org.apache.commons/commons-pool2
+    implementation 'org.apache.commons:commons-pool2:2.11.1'
+
+
+
+
+
+// https://mvnrepository.com/artifact/org.hibernate/hibernate-entitymanager
+    //implementation 'org.hibernate:hibernate-entitymanager:5.6.10.Final'
+// https://mvnrepository.com/artifact/org.hibernate/hibernate-core
+    //implementation 'org.hibernate:hibernate-core:5.6.10.Final'
+// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-jpa
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.7.1'
+
+
+
+
+// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web
+    implementation ('org.springframework.boot:spring-boot-starter-web:2.7.1')
+    {
+//        exclude group: 'jackson-datatype-jsr310', module: 'jackson-datatype-jsr310'
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+    }
+// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-actuator
+    //implementation ('org.springframework.boot:spring-boot-starter-actuator:2.7.1')
+//    {
+//        exclude group: 'jackson-annotations', module: 'jackson-annotations'
+//        exclude group: 'jackson-datatype-jsr310', module: 'jackson-datatype-jsr310'
+    //}
+// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-security
+    implementation 'org.springframework.boot:spring-boot-starter-security:2.7.1'
+// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-jdbc
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc:2.7.1'
+// https://mvnrepository.com/artifact/org.springframework.security/spring-security-ldap
+    //implementation 'org.springframework.security:spring-security-ldap:5.7.2'
+// https://mvnrepository.com/artifact/org.springframework.security/spring-security-oauth2-client
+    //implementation 'org.springframework.security:spring-security-oauth2-client:5.7.2'
+// https://mvnrepository.com/artifact/org.springframework.security.oauth/spring-security-oauth2
+    //implementation 'org.springframework.security.oauth:spring-security-oauth2:2.5.2.RELEASE'
 // https://mvnrepository.com/artifact/org.springframework.data/spring-data-jpa
-    implementation 'org.springframework.data:spring-data-jpa:2.7.2'
+    implementation 'org.springframework.data:spring-data-jpa:2.7.1'
+// https://mvnrepository.com/artifact/org.springframework/spring-beans
+    //implementation 'org.springframework:spring-beans:5.3.21'
+// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-autoconfigure
+    //implementation 'org.springframework.boot:spring-boot-autoconfigure:2.7.1'
 }
 sourceCompatibility = 1.15
 targetCompatibility = 1.15

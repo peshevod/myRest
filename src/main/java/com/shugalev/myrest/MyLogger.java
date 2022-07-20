@@ -8,6 +8,7 @@ import org.apache.logging.log4j.core.appender.FileAppender;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.layout.PatternLayout;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
@@ -28,8 +29,7 @@ public class MyLogger {
     private Map<String,String> myLogger;
     private org.apache.logging.log4j.Logger logger1;
     private org.apache.logging.log4j.Logger logger;
-
-    private void configureMyLogger()
+    public void configureMyLogger()
     {
         logger= LogManager.getRootLogger();
         FileAppender f0=FileAppender

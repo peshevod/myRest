@@ -7,6 +7,7 @@ package com.shugalev.myrest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.DependsOn;
 
 /*
     Cofiguration parameters for DataSource
@@ -14,6 +15,7 @@ import org.springframework.context.annotation.Configuration;
 
 @ConfigurationProperties(prefix = "database")
 @Configuration("dataSourceProperties")
+@DependsOn("myLogger")
 public class DataSourceProperties {
     private String connectURI;
     private String driver;

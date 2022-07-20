@@ -1,49 +1,47 @@
 package com.shugalev.myrest;
 
-import org.apache.commons.dbcp2.BasicDataSource;
+import org.hibernate.jpa.HibernatePersistenceProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.DependsOn;
+import org.springframework.data.jpa.provider.PersistenceProvider;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+//import org.springframework.orm.jpa
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.PersistenceUnit;
+import javax.persistence.spi.PersistenceUnitInfo;
 import javax.sql.DataSource;
 
 @Configuration
 @EnableJpaRepositories
 @EnableTransactionManagement
+@DependsOn("myDataSource")
 public class MyConfig {
 
-    @Autowired
-    private DataSourceProperties dataSourceProperties;
-
-    @Bean
-    public DataSource myDataSource()
-    {
-//        dataSourceProperties.logProperties();
-        BasicDataSource ds=new BasicDataSource();
-        ds.setDriverClassName(dataSourceProperties.getDriver());
-        ds.setUsername(dataSourceProperties.getUsername());
-        ds.setPassword(dataSourceProperties.getPassword());
-        ds.setUrl(dataSourceProperties.getConnectURI());
-        return ds;
-    }
-    @Bean
+     @Autowired
+    public DataSource myDataSource;
+   @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
 
         HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
+        HibernatePersistenceProvider provider = new HibernatePersistenceProvider();
         vendorAdapter.setGenerateDdl(true);
 
         LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
         factory.setJpaVendorAdapter(vendorAdapter);
 //        factory.setPackagesToScan("com.acme.domain");
         factory.setPackagesToScan("com.shugalev.myrest");
-        factory.setDataSource(myDataSource());
+        factory.setDataSource(myDataSource);
+//        factory.setPersistenceProviderClass(HibernatePersistenceProvider.class);
+        factory.setPersistenceUnitName("camel");
         return factory;
     }
 
@@ -55,10 +53,5 @@ public class MyConfig {
         return txManager;
     }
 
-    @Bean
-    public MyIncidentRepository incidentRepository()
-    {
-        return new MyIncidentRepository();
-    }
 
 }
