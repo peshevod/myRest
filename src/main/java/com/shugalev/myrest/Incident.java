@@ -3,6 +3,7 @@ package com.shugalev.myrest;
 import org.apache.camel.Exchange;
 import org.apache.camel.TypeConversionException;
 import org.apache.camel.support.TypeConverterSupport;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -52,22 +53,22 @@ public class Incident{
   @Column
   private Integer category;
   
-  @Column
-  private Timestamp create_date;
+  @Column(columnDefinition = "TIMESTAMP")
+  private String create_date;
   
-  @Column
-  private Timestamp update_date;
+  @Column(columnDefinition = "TIMESTAMP")
+  private String update_date;
   
-  @Column
-  private Timestamp start_date;
+  @Column(columnDefinition = "TIMESTAMP")
+  private String start_date;
   
-  @Column
-  private Timestamp close_date;
+  @Column(columnDefinition = "TIMESTAMP")
+  private String close_date;
   
   protected Incident(){
   }
 
-  public Incident(Long id, Integer status, String subject, String description, Integer priority, Integer severity, String assignee, Integer category, Timestamp create_date, Timestamp update_date, Timestamp start_date, Timestamp close_date) {
+  public Incident(Long id, Integer status, String subject, String description, Integer priority, Integer severity, String assignee, Integer category, String create_date, String update_date, String start_date, String close_date) {
     this.id=id;
     this.status = status;
     this.subject = subject;
@@ -81,33 +82,6 @@ public class Incident{
     this.start_date = start_date;
     this.close_date = close_date;
   }
-
-  /*private Map keysUp(Map<String,String> in)
-  {
-    HashMap<String,String> newmap=new HashMap<>();
-    for(String s:in.keySet()) newmap.put(s.toUpperCase(), in.get(s));
-    return newmap;
-  }
-
-  @Converter
-  public static Incident toIncident(Map<String,String> map0)
-  {
-    Map<String,String> map=keysUp(map0);
-    return new Incident(null, Integer.parseInt(map.get("STATUS")), map.get("SUBJECT"), map.get("DESCRIPTION"),
-          Integer.parseInt(map.get("PRIORITY")), Integer.parseInt(map.get("SEVERITY")), map.get("ASSIGNEE"),
-          Integer.parseInt(map.get("CATEGORY")), Timestamp.valueOf(now()), Timestamp.valueOf(now()), null, null);
-    this.status = Integer.parseInt(map.get("STATUS"));
-    this.subject = map.get("SUBJECT");
-    this.description = map.get("DESCRIPTION");
-    this.priority = Integer.parseInt(map.get("PRIORITY"));
-    this.severity = Integer.parseInt(map.get("SEVERITY"));
-    this.assignee = map.get("ASSIGNEE");
-    this.category = Integer.parseInt(map.get("CATEGORY"));
-    this.create_date = Timestamp.valueOf(now());
-    this.update_date = Timestamp.valueOf(now());
-  //  this.start_date = start_date;
-  //  this.close_date = close_date;
-  }*/
 
   public Long getId() {
     return id;
@@ -141,19 +115,19 @@ public class Incident{
     return category;
   }
 
-  public Timestamp getCreate_date() {
+  public String getCreate_date() {
     return create_date;
   }
 
-  public Timestamp getUpdate_date() {
+  public String getUpdate_date() {
     return update_date;
   }
 
-  public Timestamp getStart_date() {
+  public String getStart_date() {
     return start_date;
   }
 
-  public Timestamp getClose_date() {
+  public String getClose_date() {
     return close_date;
   }
 
@@ -208,19 +182,19 @@ public class Incident{
     this.category = category;
   }
 
-  public void setCreate_date(Timestamp create_date) {
+  public void setCreate_date(String create_date) {
     this.create_date = create_date;
   }
 
-  public void setUpdate_date(Timestamp update_date) {
+  public void setUpdate_date(String update_date) {
     this.update_date = update_date;
   }
 
-  public void setStart_date(Timestamp start_date) {
+  public void setStart_date(String start_date) {
     this.start_date = start_date;
   }
 
-  public void setClose_date(Timestamp close_date) {
+  public void setClose_date(String close_date) {
     this.close_date = close_date;
   }
 
@@ -242,7 +216,7 @@ public class Incident{
     if(map.containsKey("SEVERITY")) this.severity=Integer.parseInt(map.get("SEVERITY"));
     if(map.containsKey("ASSIGNEE")) this.assignee=map.get("ASSIGNEE");
     if(map.containsKey("CATEGORY")) this.category=Integer.parseInt(map.get("CATEGORY"));
-    this.update_date=Timestamp.valueOf(now());
+    this.update_date=now().toString();
     return this;
   }
 
