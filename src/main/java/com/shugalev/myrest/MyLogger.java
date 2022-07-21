@@ -2,6 +2,7 @@ package com.shugalev.myrest;
 
 import java.util.Map;
 
+//import org.apache.camel.Configuration;
 import org.apache.logging.log4j.core.appender.ConsoleAppender;
 import org.apache.logging.log4j.core.appender.ConsoleAppender.*;
 import org.apache.logging.log4j.core.appender.FileAppender;
@@ -16,7 +17,7 @@ import org.springframework.context.annotation.Configuration;
  */
 
 @ConfigurationProperties(prefix = "log")
-@Configuration("myLogger")
+@Configuration
 public class MyLogger {
     
     private Map<String,String> myLogger;
@@ -74,7 +75,6 @@ public class MyLogger {
     public org.apache.logging.log4j.Logger getLogger1()
     {
         return logger1;
-
     }
     
     public Map<String,String> getMyLogger()

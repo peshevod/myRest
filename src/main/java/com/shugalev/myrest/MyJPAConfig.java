@@ -20,10 +20,10 @@ import javax.sql.DataSource;
 //@DependsOn("myDataSource")
 public class MyJPAConfig {
 
-     @Autowired
+    @Autowired
     public DataSource myDataSource;
    @Bean
-    public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
+   public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
 
         HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         HibernatePersistenceProvider provider = new HibernatePersistenceProvider();

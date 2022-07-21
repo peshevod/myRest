@@ -1,18 +1,8 @@
 package com.shugalev.myrest;
 
-import org.apache.camel.Exchange;
-import org.apache.camel.TypeConversionException;
-import org.apache.camel.support.TypeConverterSupport;
-import org.springframework.format.annotation.DateTimeFormat;
-
 import javax.persistence.*;
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import static java.time.LocalDateTime.now;
@@ -204,7 +194,7 @@ public class Incident{
     for(String s:in.keySet()) newmap.put(s.toUpperCase(), in.get(s));
     return newmap;
   }
-  public Incident update(Map<String,String> map0)
+  public Incident update(Map map0)
   {
     if(map0==null) return this;
     Map<String,String> map=keysUp(map0);
@@ -220,10 +210,6 @@ public class Incident{
     return this;
   }
 
-  public Incident update(List<Map<String,String>> list) {
-    if(list==null) return this;
-    return update(list.get(0));
-  }
   public Incident clearId()
   {
     id=null;

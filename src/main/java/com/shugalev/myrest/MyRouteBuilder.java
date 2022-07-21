@@ -1,5 +1,6 @@
 package com.shugalev.myrest;
 
+import org.apache.camel.BeanInject;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.model.rest.RestBindingMode;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class MyRouteBuilder extends RouteBuilder
 {
-    @Autowired
+    @BeanInject
     private MyLogger myLogger;
     @Value("${log.update.address}")
     private String updateAddr;

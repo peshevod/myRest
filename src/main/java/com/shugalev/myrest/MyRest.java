@@ -28,13 +28,11 @@ public class MyRest{
     private static ApplicationContext applicationContext;
     @Autowired
     private MyLogger myLogger;
-    public void test() throws Exception
+    private static final String[] springBeans={"myDataSource","myUpdateMap","entityManagerFactory","transactionManager","myLogger"};
+    public void tune() throws Exception
     {
          context = new DefaultCamelContext();
-         context.getRegistry().bind("myDataSource", applicationContext.getBean("myDataSource"));
-         context.getRegistry().bind("myUpdateMap", applicationContext.getBean("myUpdateMap"));
-         context.getRegistry().bind("entityManagerFactory", applicationContext.getBean("entityManagerFactory"));
-         context.getRegistry().bind("transactionManager", applicationContext.getBean("transactionManager"));
+         for(String s:springBeans) context.getRegistry().bind(s, applicationContext.getBean(s));
          context.getTypeConverterRegistry().addTypeConverter(Incident.class,Map.class, (TypeConverter) applicationContext.getBean("myConverter"));
 /*         String[] beans=applicationContext.getBeanDefinitionNames();
         for(String s:beans) if(s.toUpperCase().contains("INCIDENT"))
@@ -50,7 +48,7 @@ public class MyRest{
 
         applicationContext=SpringApplication.run(MyRest.class, args);
         Thread.sleep(3000);
-        ((MyRest)applicationContext.getBean("myRest")).test();
+        ((MyRest)applicationContext.getBean("myRest")).tune();
     }
     @Bean
     public ServletRegistrationBean camelServletRegistrationBean() {
