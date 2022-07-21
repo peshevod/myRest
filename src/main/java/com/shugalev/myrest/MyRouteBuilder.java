@@ -36,15 +36,14 @@ public class MyRouteBuilder extends RouteBuilder
                 .to("direct:deleteall");
 
         from("direct:read")
-                .to("log:GET_IN?level=INFO&showBody=true&showHeaders=true")
-                .to("log:GET_BEFORE_DB?level=INFO&showBody=true&showHeaders=true")
-               .choice()
+                .to("log:GET_BEFORE_CHOICE?level=INFO&showBody=true&showHeaders=true")
+                .choice()
                     .when(header("id").isNotNull())
                         .toD("jpa:Incident?query=select o from Incident o where o.id = ${header.id}")
                     .otherwise()
                         .to("jpa:Incident?query=select o from Incident o")
                 .end()
-                .to("log:GET_AFTER_DB?level=INFO&showBody=true&showHeaders=true");
+                .to("log:GET_AFTER_CHOICE?level=INFO&showBody=true&showHeaders=true");
 
         from("direct:create")
                 .to("log:POST_IN?level=INFO&showBody=true&showHeaders=true")
@@ -54,8 +53,7 @@ public class MyRouteBuilder extends RouteBuilder
                 .setBody(body().convertTo(Incident.class).method("clearId"))
                 .to("log:POST_BEFORE_DB?level=INFO&showBody=true&showHeaders=true")
                 .to("jpa:Incident")
-                .to("log:POST_AFTER_DB?level=INFO&showBody=true&showHeaders=true")
-                .to("log:POST_AFTER_DB_DOP?level=INFO&showBody=true&showHeaders=true");
+                .to("log:POST_AFTER_DB?level=INFO&showBody=true&showHeaders=true");
 
         from("direct:update")
                 .to("log:PUT_IN_ilya?level=INFO&showBody=true&showHeaders=true")
@@ -69,7 +67,7 @@ public class MyRouteBuilder extends RouteBuilder
                 .to("log:PUT_BEFORE_GET_ID?level=INFO&showBody=true&showHeaders=true")
                 .setHeader("id",simple("${body[id]}"))
                 .to("log:PUT_AFTER_GET_ID?level=INFO&showBody=true&showHeaders=true")
-                .toD("jpa:Incident?query=select o from Incident o where id=${header.id}")
+                .toD("jpa:Incident?query=select o from Incident o where o.id=${header.id}")
                 .to("log:PUT_AFTER_QUERY?level=INFO&showBody=true&showHeaders=true")
                 .enrich("bean:myUpdateMap?method=getMap()",new UpdateAggregationStrategy())
                 .to("log:PUT_AFTER_UPDATE?level=INFO&showBody=true&showHeaders=true")
@@ -80,8 +78,7 @@ public class MyRouteBuilder extends RouteBuilder
         from("direct:deleteall")
                 .to("jpa:Incident?query=delete from Incident&useExecuteUpdate=true");
         from("direct:delete")
-                .to("log:DELETE_IN_ilya1?level=INFO&showBody=true&showHeaders=true")
-                .to("log:DELETE_INCIDENT?level=INFO&showBody=true&showHeaders=true")
+                .to("log:DELETE_IN_ilya?level=INFO&showBody=true&showHeaders=true")
                 .toD("jpa:Incident?query=delete from Incident o where o.id=${header.id}&useExecuteUpdate=true")
                 .to("log:AFTER_DELETE?level=INFO&showBody=true&showHeaders=true");
     }
