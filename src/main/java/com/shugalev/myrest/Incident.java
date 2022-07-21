@@ -9,6 +9,7 @@ import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -241,10 +242,14 @@ public class Incident{
     if(map.containsKey("SEVERITY")) this.severity=Integer.parseInt(map.get("SEVERITY"));
     if(map.containsKey("ASSIGNEE")) this.assignee=map.get("ASSIGNEE");
     if(map.containsKey("CATEGORY")) this.category=Integer.parseInt(map.get("CATEGORY"));
-    this.update_date=Timestamp.valueOf(map.get("UPDATE_DATE"));
+    this.update_date=Timestamp.valueOf(now());
     return this;
   }
 
+  public Incident update(List<Map<String,String>> list) {
+    if(list==null) return this;
+    return update(list.get(0));
+  }
   public Incident clearId()
   {
     id=null;

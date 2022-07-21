@@ -8,19 +8,12 @@ import org.apache.logging.log4j.core.appender.FileAppender;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.layout.PatternLayout;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
  *
  * @author ilya
  */
-
-/*
-    Logger settings
-    two types - org.slf4j and org.apache.log4j
-*/
-
 
 @ConfigurationProperties(prefix = "log")
 @Configuration("myLogger")

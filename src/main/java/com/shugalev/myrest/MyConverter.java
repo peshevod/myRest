@@ -42,23 +42,3 @@ public class MyConverter extends TypeConverterSupport {
         return null;
     }
 }
-
-
-/*@Converter(generateLoader = true)
-public class MyConverter implements TypeConverters {
-
-    private static Map keysUp(Map<String,String> in)
-    {
-        HashMap<String,String> newmap=new HashMap<>();
-        for(String s:in.keySet()) newmap.put(s.toUpperCase(), in.get(s));
-        return newmap;
-    }
-
-    @Converter
-    public Incident toIncident(LinkedHashMap data, Exchange exchange) {
-        Map<String,String> map=keysUp(data);
-        return new Incident(null, Integer.parseInt(map.get("STATUS")), map.get("SUBJECT"), map.get("DESCRIPTION"),
-                Integer.parseInt(map.get("PRIORITY")), Integer.parseInt(map.get("SEVERITY")), map.get("ASSIGNEE"),
-                Integer.parseInt(map.get("CATEGORY")), Timestamp.valueOf(now()), Timestamp.valueOf(now()), null, null);
-    }
-}*/

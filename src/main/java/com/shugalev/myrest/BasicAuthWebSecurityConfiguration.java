@@ -42,7 +42,6 @@ public class BasicAuthWebSecurityConfiguration
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-//        myLogger.getLogger1().info("allowed path="+basicAuthWebSecurityConfiguration.get("path"));
         myLogger.getLogger().info("allowed path={}",basicAuthWebSecurityConfiguration.get("path"));
         http.authorizeRequests()
                 .antMatchers(HttpMethod.POST,basicAuthWebSecurityConfiguration.get("path")).hasRole("USER_ROLE")
