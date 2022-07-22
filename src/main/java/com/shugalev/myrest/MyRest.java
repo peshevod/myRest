@@ -33,16 +33,18 @@ public class MyRest{
     private MyLogger myLogger;
     @Autowired
     private MyConverter myConverter;
-//    private static final String[] springBeans={"myDataSource","myUpdateMap","entityManagerFactory","transactionManager","myLogger"};
+
+    //    private static final String[] springBeans={"myDataSource","myUpdateMap","entityManagerFactory","transactionManager","myLogger"};
     public void tune() throws Exception
     {
 //        context = new DefaultCamelContext();
 //        context=(CamelContext)applicationContext.getBean("camelContext");
 //        for(String s:springBeans) context.getRegistry().bind(s, applicationContext.getBean(s));
 //         context.getTypeConverterRegistry().addTypeConverter(Incident.class,Map.class, (TypeConverter) applicationContext.getBean("myConverter"));
-         camelContext.getTypeConverterRegistry().addTypeConverter(Incident.class,Map.class,myConverter);
+
+    camelContext.getTypeConverterRegistry().addTypeConverter(Incident.class,Map.class,myConverter);
 /*         String[] beans=applicationContext.getBeanDefinitionNames();
-        for(String s:beans) if(s.toUpperCase().contains("INCIDENT"))
+        for(String s:beans) if(s.toUpperCase().contains("JPA"))
         {
             myLogger.getLogger().info(s+" "+
                     applicationContext.getBean(s).getClass().getCanonicalName());

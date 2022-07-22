@@ -13,6 +13,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
+import java.util.HashMap;
+import java.util.Map;
 
 @Configuration
 @EnableJpaRepositories
@@ -22,18 +24,22 @@ public class MyJPAConfig {
 
     @Autowired
     public DataSource myDataSource;
+    @Autowired
+    public OurDataSource ourDataSource;
    @Bean
    public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
 
         HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
-        HibernatePersistenceProvider provider = new HibernatePersistenceProvider();
-        vendorAdapter.setGenerateDdl(true);
+//        HibernatePersistenceProvider provider = new HibernatePersistenceProvider();
+//        vendorAdapter.setGenerateDdl(ourDataSource.isGenerate());
+
 
         LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
         factory.setJpaVendorAdapter(vendorAdapter);
         factory.setPackagesToScan("com.shugalev.myrest");
         factory.setDataSource(myDataSource);
         factory.setPersistenceUnitName("camel");
+        factory.setJpaPropertyMap(ourDataSource.getHibernate());
         return factory;
     }
 

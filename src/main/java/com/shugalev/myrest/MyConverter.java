@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 //import java.sql.Timestamp;
 import java.util.HashMap;
 //import java.util.LinkedHashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import static java.time.LocalDateTime.now;
@@ -25,7 +26,7 @@ public class MyConverter{
         return newmap;
     }
     @Converter
-    public static Incident toIncident(Map map0)
+    public static Incident toIncident(LinkedHashMap map0)
     {
         Map<String,String> map=keysUp((Map)map0);
         return new Incident(map.containsKey("ID") ? Long.parseLong(map.get("ID")):null,
@@ -41,9 +42,6 @@ public class MyConverter{
                 null, null);
     }
 }*/
-
-
-
 
 @Component
 public class MyConverter extends TypeConverterSupport {
