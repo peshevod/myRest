@@ -11,6 +11,8 @@ package com.shugalev.myrest;
 import org.apache.camel.CamelContext;
 import org.apache.camel.TypeConverter;
 import org.apache.camel.impl.DefaultCamelContext;
+import org.apache.camel.spi.BeanRepository;
+import org.apache.camel.spring.SpringCamelContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -24,24 +26,29 @@ import java.util.*;
 @SpringBootApplication
 public class MyRest{
 
-    private CamelContext context;
+    @Autowired
+    private CamelContext camelContext;
     private static ApplicationContext applicationContext;
     @Autowired
     private MyLogger myLogger;
-    private static final String[] springBeans={"myDataSource","myUpdateMap","entityManagerFactory","transactionManager","myLogger"};
+    @Autowired
+    private MyConverter myConverter;
+//    private static final String[] springBeans={"myDataSource","myUpdateMap","entityManagerFactory","transactionManager","myLogger"};
     public void tune() throws Exception
     {
-         context = new DefaultCamelContext();
-         for(String s:springBeans) context.getRegistry().bind(s, applicationContext.getBean(s));
-         context.getTypeConverterRegistry().addTypeConverter(Incident.class,Map.class, (TypeConverter) applicationContext.getBean("myConverter"));
+//        context = new DefaultCamelContext();
+//        context=(CamelContext)applicationContext.getBean("camelContext");
+//        for(String s:springBeans) context.getRegistry().bind(s, applicationContext.getBean(s));
+//         context.getTypeConverterRegistry().addTypeConverter(Incident.class,Map.class, (TypeConverter) applicationContext.getBean("myConverter"));
+         camelContext.getTypeConverterRegistry().addTypeConverter(Incident.class,Map.class,myConverter);
 /*         String[] beans=applicationContext.getBeanDefinitionNames();
         for(String s:beans) if(s.toUpperCase().contains("INCIDENT"))
         {
             myLogger.getLogger().info(s+" "+
                     applicationContext.getBean(s).getClass().getCanonicalName());
         }*/
-        context.addRoutes(applicationContext.getBean(MyRouteBuilder.class));
-        context.start();
+//        context.addRoutes(applicationContext.getBean(MyRouteBuilder.class));
+//        context.start();
     }
 
     public static void main(String[] args) throws Exception {
@@ -50,8 +57,8 @@ public class MyRest{
         Thread.sleep(3000);
         ((MyRest)applicationContext.getBean("myRest")).tune();
     }
-    @Bean
-    public ServletRegistrationBean camelServletRegistrationBean() {
+   @Bean
+    public ServletRegistrationBean myCamelServletRegistrationBean() {
         ServletRegistrationBean registration = new ServletRegistrationBean(new CamelHttpTransportServlet(), "/*");
         registration.setName("CamelServlet");
         return registration;
