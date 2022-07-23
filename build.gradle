@@ -7,13 +7,8 @@
  */
 
 plugins {
-    // Apply the application plugin to add support for building a CLI application in Java.
-    id 'org.springframework.boot' version '2.7.1'
-    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'application'
-//    id 'io.free fair.lombok' version '6.5.0.3'
     id 'java'
-    id 'groovy'
 }
 
 repositories {
@@ -26,6 +21,7 @@ def camel_version = '3.18.0'
 def log4j_version = '2.18.0'
 def hibernate_version = '5.6.10.Final'
 def spring_version = '2.7.1'
+def junit_version = '5.8.1'
 
 
 dependencies {
@@ -68,8 +64,8 @@ dependencies {
 */
 // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-test
     testImplementation 'org.springframework.boot:spring-boot-starter-test:'+spring_version
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:'+junit_version
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:'+junit_version
 // https://mvnrepository.com/artifact/org.junit.platform/junit-platform-suite
     testImplementation 'org.junit.platform:junit-platform-suite:1.8.2'
 
@@ -93,8 +89,6 @@ dependencies {
     implementation 'com.h2database:h2:2.1.214'
 // https://mvnrepository.com/artifact/org.apache.commons/commons-dbcp2
     implementation 'org.apache.commons:commons-dbcp2:2.9.0'
-// https://mvnrepository.com/artifact/javax.persistence/javax.persistence-api
-    //implementation 'javax.persistence:javax.persistence-api:2.2'
 // https://mvnrepository.com/artifact/org.apache.commons/commons-pool2
     implementation 'org.apache.commons:commons-pool2:2.11.1'
 
@@ -127,6 +121,7 @@ dependencies {
 // https://mvnrepository.com/artifact/org.springframework.security/spring-security-oauth2-client
     implementation 'org.springframework.security:spring-security-oauth2-client:5.7.2'
 }
+
 sourceCompatibility = 1.15
 targetCompatibility = 1.15
 

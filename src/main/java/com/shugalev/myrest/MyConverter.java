@@ -16,7 +16,7 @@ import java.util.Map;
 
 import static java.time.LocalDateTime.now;
 
-/*@Converter(generateLoader = true)
+@Converter(generateLoader = true)
 public class MyConverter{
 
     private static Map keysUp(Map<String,String> in)
@@ -41,9 +41,9 @@ public class MyConverter{
                 map.containsKey("UPDATE_DATE")?map.get("UPDATE_DATE"):now().toString(),
                 null, null);
     }
-}*/
+}
 
-@Component
+/*@Component
 public class MyConverter extends TypeConverterSupport {
     private static Map keysUp(Map<String,String> in)
     {
@@ -69,4 +69,4 @@ public class MyConverter extends TypeConverterSupport {
         }
         return null;
     }
-}
+}*/

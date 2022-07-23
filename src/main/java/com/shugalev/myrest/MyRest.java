@@ -22,13 +22,13 @@ import java.util.*;
 @SpringBootApplication
 public class MyRest{
 
-    @Autowired
-    private CamelContext camelContext;
+//    @Autowired
+//    private CamelContext camelContext;
     private static ApplicationContext applicationContext;
-    @Autowired
-    private MyLogger myLogger;
-    @Autowired
-    private MyConverter myConverter;
+//    @Autowired
+//    private MyLogger myLogger;
+//    @Autowired
+//    private MyConverter myConverter;
 
     //    private static final String[] springBeans={"myDataSource","myUpdateMap","entityManagerFactory","transactionManager","myLogger"};
     public void tune() throws Exception
@@ -38,7 +38,7 @@ public class MyRest{
 //        for(String s:springBeans) context.getRegistry().bind(s, applicationContext.getBean(s));
 //         context.getTypeConverterRegistry().addTypeConverter(Incident.class,Map.class, (TypeConverter) applicationContext.getBean("myConverter"));
 
-    camelContext.getTypeConverterRegistry().addTypeConverter(Incident.class,Map.class,myConverter);
+//    camelContext.getTypeConverterRegistry().addTypeConverter(Incident.class,Map.class,myConverter);
 /*         String[] beans=applicationContext.getBeanDefinitionNames();
         for(String s:beans) if(s.toUpperCase().contains("JPA"))
         {
@@ -52,8 +52,8 @@ public class MyRest{
     public static void main(String[] args) throws Exception {
 
         applicationContext=SpringApplication.run(MyRest.class, args);
-        Thread.sleep(3000);
-        ((MyRest)applicationContext.getBean("myRest")).tune();
+//        Thread.sleep(3000);
+//        ((MyRest)applicationContext.getBean("myRest")).tune();
     }
    @Bean
     public ServletRegistrationBean myCamelServletRegistrationBean() {
