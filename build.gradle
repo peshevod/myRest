@@ -120,6 +120,18 @@ dependencies {
     implementation 'org.springframework.security:spring-security-ldap:5.7.2'
 // https://mvnrepository.com/artifact/org.springframework.security/spring-security-oauth2-client
     implementation 'org.springframework.security:spring-security-oauth2-client:5.7.2'
+
+/*
+*   GSON
+ */
+// https://mvnrepository.com/artifact/com.google.code.gson/gson
+    testImplementation 'com.google.code.gson:gson:2.9.0'
+// https://mvnrepository.com/artifact/com.google.api/api-common
+    testImplementation 'com.google.api:api-common:2.2.1'
+// https://mvnrepository.com/artifact/com.google.guava/guava
+    testImplementation 'com.google.guava:guava:31.1-jre'
+// https://mvnrepository.com/artifact/com.google.guava/guava-testlib
+    testImplementation 'com.google.guava:guava-testlib:31.1-jre'
 }
 
 sourceCompatibility = 1.15

@@ -26,7 +26,7 @@ public class MyConverter{
         return newmap;
     }
     @Converter
-    public static Incident toIncident(LinkedHashMap map0)
+    public static Incident toIncident(Map map0)
     {
         Map<String,String> map=keysUp((Map)map0);
         return new Incident(map.containsKey("ID") ? Long.parseLong(map.get("ID")):null,

@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 public class MyRouteBuilder extends RouteBuilder
 {
@@ -47,8 +49,19 @@ public class MyRouteBuilder extends RouteBuilder
 
         from("direct:create")
                 .to("log:POST_IN?level=INFO&showBody=true&showHeaders=true")
+                .choice()
+                    .when(body().isInstanceOf(List.class))
+                        .to("direct:createsplit")
+                    .otherwise()
+                        .to("direct:createnonsplit")
+                .end();
+
+        from("direct:createsplit")
                 .split(body()).aggregationStrategy(new MyAggregationStrategy())
                 .to("log:AFTER_SPLIT?level=INFO&showBody=true&showHeaders=true")
+                .to("direct:createnonsplit");
+
+        from("direct:createnonsplit")
                 .convertBodyTo(Incident.class)
                 .setBody(body().convertTo(Incident.class).method("clearId"))
                 .to("log:POST_BEFORE_DB?level=INFO&showBody=true&showHeaders=true")
