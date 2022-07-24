@@ -54,7 +54,11 @@ public class Incident{
   
   @Column(columnDefinition = "TIMESTAMP")
   private String close_date;
-  
+
+  public final static String[] string_fields={"SUBJECT","DESCRIPTION","ASSIGNEE"};
+  public final static String[] integer_fields={"STATUS","PRIORITY","SEVERITY","CATEGORY"};
+  public final static String[] timestamp_fields={"CREATE_DATE","UPDATE_DATE","START_DATE","CLOSE_DATE"};
+
   protected Incident(){
   }
 
