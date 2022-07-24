@@ -68,6 +68,8 @@ dependencies {
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:'+junit_version
 // https://mvnrepository.com/artifact/org.junit.platform/junit-platform-suite
     testImplementation 'org.junit.platform:junit-platform-suite:1.8.2'
+// https://mvnrepository.com/artifact/org.apache.camel/camel-test-spring-junit5
+    testImplementation 'org.apache.camel:camel-test-spring-junit5:3.18.0'
 
 /*
 *       log4j

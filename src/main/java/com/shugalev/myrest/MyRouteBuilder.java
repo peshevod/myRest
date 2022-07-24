@@ -53,7 +53,7 @@ public class MyRouteBuilder extends RouteBuilder
                     .when(body().isInstanceOf(List.class))
                         .to("direct:createsplit")
                     .otherwise()
-                        .to("direct:createnonsplit")
+                        .to("direct:createcontinue")
                 .end();
 
         from("direct:createsplit")
@@ -61,7 +61,7 @@ public class MyRouteBuilder extends RouteBuilder
                 .to("log:AFTER_SPLIT?level=INFO&showBody=true&showHeaders=true")
                 .to("direct:createnonsplit");
 
-        from("direct:createnonsplit")
+        from("direct:createcontinue")
                 .convertBodyTo(Incident.class)
                 .setBody(body().convertTo(Incident.class).method("clearId"))
                 .to("log:POST_BEFORE_DB?level=INFO&showBody=true&showHeaders=true")
@@ -69,6 +69,18 @@ public class MyRouteBuilder extends RouteBuilder
                 .to("log:POST_AFTER_DB?level=INFO&showBody=true&showHeaders=true");
 
         from("direct:update")
+                .choice()
+                    .when(body().isInstanceOf(List.class))
+                        .to("direct:updatesplit")
+                    .otherwise()
+                        .to("direct:updatecontinue")
+                .end();
+        from("direct:updatesplit")
+                .split(body()).aggregationStrategy(new MyAggregationStrategy())
+                .to("log:UPDATE_AFTER_SPLIT?level=INFO&showBody=true&showHeaders=true")
+                .to("direct:updatecontinue");
+
+        from("direct:updatecontinue")
                 .to("log:PUT_IN_ilya?level=INFO&showBody=true&showHeaders=true")
                 .recipientList(simple("direct:map,direct:updateIncident"));
 
