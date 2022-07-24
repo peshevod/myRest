@@ -41,9 +41,11 @@ public class MyRouteBuilder extends RouteBuilder
                 .to("log:GET_BEFORE_CHOICE?level=INFO&showBody=true&showHeaders=true")
                 .choice()
                     .when(header("id").isNotNull())
-                        .toD("jpa:Incident?query=select o from Incident o where o.id = ${header.id}")
+//                        .toD("jpa:Incident?query=select o from Incident o where o.id = ${header.id}")
+                        .toD("jpa:Incident?namedQuery=getById&parameters.id=${header.id}")
                     .otherwise()
-                        .to("jpa:Incident?query=select o from Incident o")
+//                        .to("jpa:Incident?query=select o from Incident o")
+                        .to("jpa:Incident?namedQuery=getAll")
                 .end()
                 .to("log:GET_AFTER_CHOICE?level=INFO&showBody=true&showHeaders=true");
 
@@ -59,7 +61,7 @@ public class MyRouteBuilder extends RouteBuilder
         from("direct:createsplit")
                 .split(body()).aggregationStrategy(new MyAggregationStrategy())
                 .to("log:AFTER_SPLIT?level=INFO&showBody=true&showHeaders=true")
-                .to("direct:createnonsplit");
+                .to("direct:createcontinue");
 
         from("direct:createcontinue")
                 .convertBodyTo(Incident.class)

@@ -9,6 +9,14 @@
 plugins {
     id 'application'
     id 'java'
+    id 'idea'
+}
+
+idea{
+    project{
+        jdkName = '1.15'
+        languageLevel = '1.15'
+    }
 }
 
 repositories {

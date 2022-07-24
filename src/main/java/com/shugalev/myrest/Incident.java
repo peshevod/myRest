@@ -13,6 +13,8 @@ import static java.time.LocalDateTime.now;
  */
 @Entity
 @Table(name = "MYSCHEMA.INCIDENTS1")
+@NamedQuery(name = "getById", query = "SELECT a FROM Incident a WHERE TO_CHAR(a.id) = :id")
+@NamedQuery(name = "getAll", query = "SELECT a FROM Incident a ")
 public class Incident{
   @Id
   @GeneratedValue(strategy=GenerationType.IDENTITY)
